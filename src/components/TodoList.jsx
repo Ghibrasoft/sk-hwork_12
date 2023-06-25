@@ -27,6 +27,17 @@ class TodoList extends Component {
         console.error("Error fetching todos:", error);
       });
   }
+  shouldComponentUpdate(nextProps, nextState) {
+    if (
+      this.state.openModal !== nextState.openModal ||
+      this.state.todoId !== nextState.todoId ||
+      this.state.pendingTodos.length !== nextState.pendingTodos.length ||
+      this.state.doneTodos.length !== nextState.doneTodos.length
+    ) {
+      return true;
+    }
+    return false;
+  }
 
   addNewTodo = (todo) => {
     this.setState((prevState) => ({
