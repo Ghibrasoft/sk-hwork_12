@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 
-class TodoForm extends Component {
+class AddTodo extends Component {
   state = {
     newTodo: "",
   };
@@ -13,10 +13,10 @@ class TodoForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const { newTodo } = this.state;
-    const { addTodo } = this.props;
+    const { addNewTodo } = this.props;
 
     if (newTodo.trim() !== "") {
-      addTodo(newTodo);
+      addNewTodo(newTodo);
       this.setState({ newTodo: "" });
     }
   };
@@ -50,4 +50,4 @@ class TodoForm extends Component {
   }
 }
 
-export default TodoForm;
+export default AddTodo;

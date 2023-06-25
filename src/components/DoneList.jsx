@@ -1,24 +1,30 @@
 import { Component } from "react";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { GrUndo } from "react-icons/gr";
+import Moment from "react-moment";
 
 class DoneList extends Component {
   render() {
     const { doneTodos, handleUndo, modalHandler, todoIdHandler } = this.props;
 
     return (
-      <div className="flex flex-col gap-5">
-        <h1 className="border-b-2 border-green-500">
+      <div className="flex flex-col gap-5 pb-5 overflow-y-auto">
+        <h1 className="border-b-2 border-green-500 bg-white sticky top-0">
           Done ({doneTodos.length})
         </h1>
 
         <ul className="flex flex-col gap-2">
-          {doneTodos.map(({ id, todo }) => (
+          {doneTodos.map(({ id, title }) => (
             <li
               key={id}
               className="flex justify-between border rounded-lg p-3 bg-green-100 hover:bg-green-200 group transition-opacity"
             >
-              <p className="overflow-hidden break-words">{todo}</p>
+              <div className="w-full overflow-hidden break-words">
+                <p>{title}</p>
+                <small className="flex justify-end">
+                  <Moment fromNow>{id}</Moment>
+                </small>
+              </div>
               <div className="flex gap-1 ml-5">
                 <button
                   type="button"

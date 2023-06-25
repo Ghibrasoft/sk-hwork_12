@@ -1,13 +1,11 @@
 // adds new todo
-const addTodo = (component, todo) => {
+const undoTodo = (component, todo) => {
   component.setState((prevState) => ({
-    pendingTodos: [...prevState.pendingTodos, { id: Date.now(), todo }],
+    pendingTodos: [
+      ...prevState.pendingTodos,
+      { userId: Date.now() + 1, id: Date.now(), title: todo, completed: false },
+    ],
   }));
 };
 
-// updates todos array
-const addFilteredTodos = (component, todos) => {
-  component.setState({ pendingTodos: todos });
-};
-
-export { addTodo, addFilteredTodos };
+export { undoTodo };
